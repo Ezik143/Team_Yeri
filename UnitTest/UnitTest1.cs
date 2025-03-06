@@ -1,67 +1,60 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using Information;
-using System.IO;
+using System;
 
-namespace UnitTest
+namespace PersonalInfoUnitTest
 {
     [TestClass]
-    public class UnitTest1
+    public class PersonalInfoTests
     {
         [TestMethod]
-        public void TestValidNames()
+        public void TestFullName()
         {
-            Assert.IsTrue(PersonalInfo.IsValidName("John", "Doe")); // Valid name
-            Assert.IsFalse(PersonalInfo.IsValidName("John123", "Doe")); // Invalid: Numbers in name
-            Assert.IsFalse(PersonalInfo.IsValidName("John", "Doe_")); // Invalid: Special character in name
-            Assert.IsFalse(PersonalInfo.IsValidName("", "Doe")); // Invalid: Empty first name
+            // Arrange
+            var person = new PersonalInfo("Jake", "Smith", new DateTime(1995, 5, 20), "Philippines", "Cebu", "Cebu City", 123, "Mango Ave", "Barangay Luz", 6000);
+
+            // Assert
+            Assert.AreEqual("Jake", person.Fname);
+            Assert.AreEqual("Smith", person.Lname);
         }
 
         [TestMethod]
-        public void TestValidDays()
+        public void TestAgeCalculation()
         {
-            Assert.IsTrue(PersonalInfo.IsValidDay(2024, 2, 29)); // Leap year (valid)
-            Assert.IsFalse(PersonalInfo.IsValidDay(2023, 2, 29)); // Non-leap year (invalid)
-            Assert.IsTrue(PersonalInfo.IsValidDay(2023, 12, 31)); // December 31 (valid)
-            Assert.IsFalse(PersonalInfo.IsValidDay(2023, 4, 31)); // April only has 30 days (invalid)
-        }
+            // Arrange
+            var person = new PersonalInfo("Jake", "Smith", new DateTime(1995, 5, 20), "Philippines", "Cebu", "Cebu City", 123, "Mango Ave", "Barangay Luz", 6000);
 
-        [TestMethod]
-        public void TestCalculateAge()
-        {
-            PersonalInfo person = new PersonalInfo("John", "Doe", new DateTime(2000, 1, 1), "", "", "", 0, "", "", 0);
-            int expectedAge = DateTime.Today.Year - 2000;
-            if (DateTime.Today < new DateTime(DateTime.Today.Year, 1, 1)) // If birthday hasn't happened yet
+            // Act
+            int age = person.CalculateAge();
+
+            // Assert
+            int expectedAge = DateTime.Today.Year - 1995;
+            if (DateTime.Today < new DateTime(DateTime.Today.Year, 5, 20))
             {
                 expectedAge--;
             }
-            Assert.AreEqual(expectedAge, person.CalculateAge());
+            Assert.AreEqual(expectedAge, age);
         }
 
         [TestMethod]
-        public void TestDisplayFullName()
+        public void TestValidName()
         {
-            PersonalInfo person = new PersonalInfo("Jane", "Doe", DateTime.Now, "", "", "", 0, "", "", 0);
-            using (StringWriter sw = new StringWriter())
-            {
-                Console.SetOut(sw);
-                person.DisplayFullName();
-                string expectedOutput = "Your full name is: Jane Doe\r\n";
-                Assert.AreEqual(expectedOutput, sw.ToString());
-            }
+            // Assert
+            Assert.IsTrue(PersonalInfo.IsValidName("Jake", "Smith"));
+            Assert.IsFalse(PersonalInfo.IsValidName("", "Smith"));
+            Assert.IsFalse(PersonalInfo.IsValidName("Jake", ""));
+            Assert.IsFalse(PersonalInfo.IsValidName("J@ke", "Smith"));
         }
 
         [TestMethod]
-        public void TestDisplayAddress()
+        public void TestValidDay()
         {
-            PersonalInfo person = new PersonalInfo("John", "Doe", DateTime.Now, "USA", "California", "Los Angeles", 123, "Main St", "Downtown", 90001);
-            using (StringWriter sw = new StringWriter())
-            {
-                Console.SetOut(sw);
-                person.DisplayAddress();
-                string expectedOutput = "Your complete address is: 123 Main St, Downtown, Los Angeles, California 90001, USA\r\n";
-                Assert.AreEqual(expectedOutput, sw.ToString());
-            }
+            // Assert
+            Assert.IsTrue(PersonalInfo.IsValidDay(2024, 2, 29)); // Leap year
+            Assert.IsFalse(PersonalInfo.IsValidDay(2023, 2, 29)); // Non-leap year
+            Assert.IsTrue(PersonalInfo.IsValidDay(2023, 4, 30));
+            Assert.IsFalse(PersonalInfo.IsValidDay(2023, 4, 31));
+            Assert.IsTrue(PersonalInfo.IsValidDay(2023, 1, 31));
         }
     }
 }

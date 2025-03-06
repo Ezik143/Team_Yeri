@@ -70,7 +70,7 @@
 
         public void DisplayAddress()
         {
-            Console.WriteLine($"Your complete address is: {HouseNumber} {Street}, {Barangay}, {City}, {Province} {PostalCode}, {Country}");
+            Console.WriteLine($"Your complete address is: {HouseNumber} {Street}, {Barangay}, {City}, {Province}, {PostalCode}, {Country}");
         }
 
     }
