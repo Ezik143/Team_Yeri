@@ -1,0 +1,11 @@
+C:\C#\Main-Console\Information\bin\Debug\net9.0\Information.deps.json
+C:\C#\Main-Console\Information\bin\Debug\net9.0\Information.dll
+C:\C#\Main-Console\Information\bin\Debug\net9.0\Information.pdb
+C:\C#\Main-Console\Information\obj\Debug\net9.0\Information.GeneratedMSBuildEditorConfig.editorconfig
+C:\C#\Main-Console\Information\obj\Debug\net9.0\Information.AssemblyInfoInputs.cache
+C:\C#\Main-Console\Information\obj\Debug\net9.0\Information.AssemblyInfo.cs
+C:\C#\Main-Console\Information\obj\Debug\net9.0\Information.csproj.CoreCompileInputs.cache
+C:\C#\Main-Console\Information\obj\Debug\net9.0\Information.dll
+C:\C#\Main-Console\Information\obj\Debug\net9.0\refint\Information.dll
+C:\C#\Main-Console\Information\obj\Debug\net9.0\Information.pdb
+C:\C#\Main-Console\Information\obj\Debug\net9.0\ref\Information.dll
