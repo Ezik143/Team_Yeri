@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Main-Console")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+642fa957826b85d7dc7170b710f83e8d46feb177")]
+<<<<<<< HEAD
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9c704cc842b0a34a2088fc8c808762d535dc9f26")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+>>>>>>> parent of 0e568da (Complete overhaul)
 [assembly: System.Reflection.AssemblyProductAttribute("Main-Console")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Main-Console")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

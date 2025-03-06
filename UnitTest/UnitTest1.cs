@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Information;
 using System;
+using System.IO;
 
 namespace PersonalInfoUnitTest
 {
@@ -55,6 +56,25 @@ namespace PersonalInfoUnitTest
             Assert.IsTrue(PersonalInfo.IsValidDay(2023, 4, 30));
             Assert.IsFalse(PersonalInfo.IsValidDay(2023, 4, 31));
             Assert.IsTrue(PersonalInfo.IsValidDay(2023, 1, 31));
+        }
+
+        [TestMethod]
+        public void TestDisplayFullInfo()
+        {
+            // Arrange
+            var person = new PersonalInfo("Jake", "Smith", new DateTime(1995, 5, 20), "Philippines", "Cebu", "Cebu City", 123, "Mango Ave", "Barangay Luz", 6000);
+            var expectedOutput = $"Your full name is: Jake Smith\nYour age is: {person.CalculateAge()}\nYour complete address is: 123 Mango Ave, Barangay Luz, Cebu City, Cebu, 6000, Philippines\n";
+
+            // Act
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                person.DisplayFullInfo();
+                var output = sw.ToString();
+
+                // Assert
+                Assert.AreEqual(expectedOutput, output);
+            }
         }
     }
 }
