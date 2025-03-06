@@ -2,9 +2,12 @@
 using System;
 class Program
 {
+    const string RedText = "\x1b[31m";
+    const string ResetText = "\x1b[0m";
     static void Main(string[] args)
     {
-        Console.WriteLine("NAME");
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"{RedText}NAME{ResetText}");
         Console.WriteLine();
 
         string fname, lname;
@@ -21,7 +24,7 @@ class Program
         } while (!PersonalInfo.IsValidName(fname, lname));
 
         Console.WriteLine();
-        Console.WriteLine("BIRTHDATE");
+        Console.WriteLine($"{RedText}BIRTHDATE{ResetText}");
         Console.WriteLine();
 
         int bYear, bMonth, bDay;
@@ -67,12 +70,8 @@ class Program
             }
         }
 
-        PersonalInfo personalInfo = new PersonalInfo(fname, lname, new DateTime(bYear, bMonth, bDay), "", "", "", 0, "", "", 0);
-
-        Console.WriteLine($"Your age is: {personalInfo.CalculateAge()}");
         Console.WriteLine();
-
-        Console.WriteLine("ADDRESS");
+        Console.WriteLine($"{RedText}ADDRESS{ResetText}");
         Console.WriteLine();
 
         Console.Write("Country: ");
@@ -97,7 +96,9 @@ class Program
             Console.WriteLine("Invalid postal code.");
             return;
         }
+        PersonalInfo personalInfo = new PersonalInfo(fname, lname, new DateTime(bYear, bMonth, bDay), country, province, city, houseNumber, street, barangay, postalCode);
         personalInfo.DisplayFullName();
         personalInfo.DisplayAddress();
+
     }
 }

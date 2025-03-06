@@ -9,3 +9,15 @@ C:\C#\Main-Console\Information\obj\Debug\net9.0\Information.dll
 C:\C#\Main-Console\Information\obj\Debug\net9.0\refint\Information.dll
 C:\C#\Main-Console\Information\obj\Debug\net9.0\Information.pdb
 C:\C#\Main-Console\Information\obj\Debug\net9.0\ref\Information.dll
+C:\C#\Basic-Information\Information\bin\Debug\net9.0\Information.deps.json
+C:\C#\Basic-Information\Information\bin\Debug\net9.0\Information.dll
+C:\C#\Basic-Information\Information\bin\Debug\net9.0\Information.pdb
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\Information.GeneratedMSBuildEditorConfig.editorconfig
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\Information.AssemblyInfoInputs.cache
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\Information.AssemblyInfo.cs
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\Information.csproj.CoreCompileInputs.cache
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\Information.sourcelink.json
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\Information.dll
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\refint\Information.dll
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\Information.pdb
+C:\C#\Basic-Information\Information\obj\Debug\net9.0\ref\Information.dll

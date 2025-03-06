@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\C#\\Main-Console\\Main-Console\\Main-Console.csproj": {}
+    "C:\\C#\\Basic-Information\\Main-Console\\Main-Console.csproj": {}
   },
   "projects": {
-    "C:\\C#\\Main-Console\\Information\\Information.csproj": {
+    "C:\\C#\\Basic-Information\\Information\\Information.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\C#\\Main-Console\\Information\\Information.csproj",
+        "projectUniqueName": "C:\\C#\\Basic-Information\\Information\\Information.csproj",
         "projectName": "Information",
-        "projectPath": "C:\\C#\\Main-Console\\Information\\Information.csproj",
+        "projectPath": "C:\\C#\\Basic-Information\\Information\\Information.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\C#\\Main-Console\\Information\\obj\\",
+        "outputPath": "C:\\C#\\Basic-Information\\Information\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -45,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -66,18 +66,18 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\C#\\Main-Console\\Main-Console\\Main-Console.csproj": {
+    "C:\\C#\\Basic-Information\\Main-Console\\Main-Console.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\C#\\Main-Console\\Main-Console\\Main-Console.csproj",
+        "projectUniqueName": "C:\\C#\\Basic-Information\\Main-Console\\Main-Console.csproj",
         "projectName": "Main-Console",
-        "projectPath": "C:\\C#\\Main-Console\\Main-Console\\Main-Console.csproj",
+        "projectPath": "C:\\C#\\Basic-Information\\Main-Console\\Main-Console.csproj",
         "packagesPath": "C:\\Users\\Lenovo\\.nuget\\packages\\",
-        "outputPath": "C:\\C#\\Main-Console\\Main-Console\\obj\\",
+        "outputPath": "C:\\C#\\Basic-Information\\Main-Console\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -99,8 +99,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\C#\\Main-Console\\Information\\Information.csproj": {
-                "projectPath": "C:\\C#\\Main-Console\\Information\\Information.csproj"
+              "C:\\C#\\Basic-Information\\Information\\Information.csproj": {
+                "projectPath": "C:\\C#\\Basic-Information\\Information\\Information.csproj"
               }
             }
           }
@@ -115,7 +115,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net9.0": {
@@ -136,7 +136,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
