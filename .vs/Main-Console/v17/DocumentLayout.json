@@ -1,34 +1,28 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\C#\\Main-Console\\",
+  "WorkspaceRootPath": "C:\\C#\\Basic-Information\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{00000000-0000-0000-0000-000000000000}|\u003CSolution\u003E|UnitTest||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{B2DD10FD-915C-448D-93E2-85B220758768}|Information\\Information.csproj|c:\\c#\\main-console\\information\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{B2DD10FD-915C-448D-93E2-85B220758768}|Information\\Information.csproj|c:\\c#\\basic-information\\information\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B2DD10FD-915C-448D-93E2-85B220758768}|Information\\Information.csproj|solutionrelative:information\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{95F4ADC8-13E7-461B-BE81-C694DCD0AAF8}|Main-Console\\Main-Console.csproj|c:\\c#\\main-console\\main-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{95F4ADC8-13E7-461B-BE81-C694DCD0AAF8}|Main-Console\\Main-Console.csproj|c:\\c#\\basic-information\\main-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{95F4ADC8-13E7-461B-BE81-C694DCD0AAF8}|Main-Console\\Main-Console.csproj|solutionrelative:main-console\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{777686AC-CA36-4103-B613-6AD99CFC5B95}|UnitTest\\UnitTest.csproj|c:\\c#\\main-console\\unittest\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{777686AC-CA36-4103-B613-6AD99CFC5B95}|UnitTest\\UnitTest.csproj|C:\\C#\\Basic-Information\\unittest\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{777686AC-CA36-4103-B613-6AD99CFC5B95}|UnitTest\\UnitTest.csproj|solutionrelative:unittest\\unittest1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{777686AC-CA36-4103-B613-6AD99CFC5B95}|UnitTest\\UnitTest.csproj|c:\\c#\\main-console\\unittest\\||{B270807C-D8C6-49EB-8EBE-8E8D566637A1}|5e9a8ac2-4f34-4521-858f-4c248ba31532"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "DockedHeight": 200,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -47,52 +41,43 @@
               "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UnitTest",
-              "DocumentMoniker": "C:\\C#\\Main-Console\\UnitTest\\UnitTest.csproj",
-              "RelativeDocumentMoniker": "UnitTest\\UnitTest.csproj",
-              "ToolTip": "C:\\C#\\Main-Console\\UnitTest\\UnitTest.csproj",
-              "RelativeToolTip": "UnitTest\\UnitTest.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2025-03-06T12:58:50.242Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\C#\\Main-Console\\Information\\Class1.cs",
+              "DocumentMoniker": "C:\\C#\\Basic-Information\\Information\\Class1.cs",
               "RelativeDocumentMoniker": "Information\\Class1.cs",
-              "ToolTip": "C:\\C#\\Main-Console\\Information\\Class1.cs",
+              "ToolTip": "C:\\C#\\Basic-Information\\Information\\Class1.cs",
               "RelativeToolTip": "Information\\Class1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAsAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-06T12:52:01.495Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "UnitTest1.cs",
-              "DocumentMoniker": "C:\\C#\\Main-Console\\UnitTest\\UnitTest1.cs",
+              "DocumentMoniker": "C:\\C#\\Basic-Information\\UnitTest\\UnitTest1.cs",
               "RelativeDocumentMoniker": "UnitTest\\UnitTest1.cs",
-              "ToolTip": "C:\\C#\\Main-Console\\UnitTest\\UnitTest1.cs",
+              "ToolTip": "C:\\C#\\Basic-Information\\UnitTest\\UnitTest1.cs",
               "RelativeToolTip": "UnitTest\\UnitTest1.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAACkAAAAAAAAAAAAYwFAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-06T12:48:56.4Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-03-06T12:48:56.4Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\C#\\Main-Console\\Main-Console\\Program.cs",
+              "DocumentMoniker": "C:\\C#\\Basic-Information\\Main-Console\\Program.cs",
               "RelativeDocumentMoniker": "Main-Console\\Program.cs",
-              "ToolTip": "C:\\C#\\Main-Console\\Main-Console\\Program.cs",
+              "ToolTip": "C:\\C#\\Basic-Information\\Main-Console\\Program.cs",
               "RelativeToolTip": "Main-Console\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA0AAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-06T12:42:13.026Z",
               "EditorCaption": ""
@@ -100,7 +85,7 @@
           ]
         },
         {
-          "DockedWidth": 82,
+          "DockedHeight": 200,
           "SelectedChildIndex": -1,
           "Children": [
             {
