@@ -1,4 +1,11 @@
-﻿namespace Information
+﻿using System;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using System.Web;
+using System.Linq;
+
+namespace Information
 {
     public class PersonalInfo
     {
@@ -12,9 +19,22 @@
         public string Street { get; set; }
         public string Barangay { get; set; }
         public int PostalCode { get; set; }
+        public bool IsAddressVerified { get; set; }
 
         public const string RedText = "\x1b[31m";
+        public const string GreenText = "\x1b[32m";
+        public const string YellowText = "\x1b[33m";
+        public const string BlueText = "\x1b[34m";
         public const string ResetText = "\x1b[0m";
+
+        private static readonly HttpClient client = new HttpClient();
+        private const string GeocodingApiUrl = "https://nominatim.openstreetmap.org/search";
+
+        static PersonalInfo()
+        {
+            // Set user agent to comply with OSM Nominatim usage policy
+            client.DefaultRequestHeaders.Add("User-Agent", "PersonalInfoApp/1.0");
+        }
 
         public PersonalInfo(string fname, string lname, DateTime birthday, string country, string province, string city, int houseNumber, string street, string barangay, int postalCode)
         {
@@ -28,18 +48,24 @@
             Street = street;
             Barangay = barangay;
             PostalCode = postalCode;
+            IsAddressVerified = false;
         }
 
         public void DisplayFullInfo()
         {
+            Console.WriteLine($"\n{BlueText}===== PERSONAL INFORMATION ====={ResetText}");
             Console.WriteLine($"Your full name is: {Fname} {Lname}");
             Console.WriteLine($"Your age is: {CalculateAge()}");
             Console.WriteLine($"Your complete address is: {HouseNumber} {Street}, {Barangay}, {City}, {Province}, {PostalCode}, {Country}");
+            
+            if (IsAddressVerified)
+                Console.WriteLine($"{GreenText}Address Status: Verified ✓{ResetText}");
+            else
+                Console.WriteLine($"{YellowText}Address Status: Not Verified{ResetText}");
         }
 
         public static string GetValidName(string nameType)
         {
-
             string name;
             do
             {
@@ -49,13 +75,16 @@
                 {
                     Console.WriteLine($"{RedText}Error:{ResetText} Invalid name. Please enter a valid name (only alphabetic characters, no spaces or numbers).");
                 }
-            } while (string.IsNullOrWhiteSpace(name) || !name.All(char.IsLetter));
+                else if (name.Length > 60)
+                {
+                    Console.WriteLine($"{RedText}Error:{ResetText} Name is too long. Please enter a name with less than 60 characters.");
+                }
+            } while (string.IsNullOrWhiteSpace(name) || !name.All(char.IsLetter) || name.Length > 60);
             return name;
         }
 
         public static DateTime GetValidBirthdate()
         {
-
             DateTime birthdate;
             while (true)
             {
@@ -82,7 +111,6 @@
 
         public static string GetInput(string fieldName)
         {
-
             string input;
             do
             {
@@ -98,7 +126,6 @@
 
         public static int GetValidNumber(string fieldName)
         {
-
             int number;
             while (true)
             {
@@ -112,15 +139,14 @@
                     }
                     Console.WriteLine($"{RedText}Error:{ResetText} Invalid {fieldName}. Please enter a valid positive number.");
                 }
-                catch(OverflowException)
+                catch (OverflowException)
                 {
-                    Console.WriteLine($"{RedText}Error:{ResetText} You inputted large number");
+                    Console.WriteLine($"{RedText}Error:{ResetText} You inputted a number that is too large.");
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"{RedText}Error:{ResetText} unexpected error occured {ex.Message}");
+                    Console.WriteLine($"{RedText}Error:{ResetText} Unexpected error occurred: {ex.Message}");
                 }
-
             }
             return number;
         }
@@ -144,6 +170,71 @@
                 age--;
             }
             return age;
+        }
+
+        public async Task<bool> ValidateAddress()
+        {
+            try
+            {
+                Console.WriteLine($"\n{BlueText}Validating address...{ResetText}");
+                
+                // Build the address query string
+                string addressQuery = $"{HouseNumber} {Street}, {City}, {Province}, {PostalCode}, {Country}";
+                
+                // Create URL with parameters
+                string requestUrl = $"{GeocodingApiUrl}?q={HttpUtility.UrlEncode(addressQuery)}&format=json&addressdetails=1&limit=1";
+                
+                // Send the request
+                HttpResponseMessage response = await client.GetAsync(requestUrl);
+                response.EnsureSuccessStatusCode();
+                
+                // Get the response content
+                string responseBody = await response.Content.ReadAsStringAsync();
+                
+                // Parse JSON response
+                using (JsonDocument doc = JsonDocument.Parse(responseBody))
+                {
+                    JsonElement root = doc.RootElement;
+                    
+                    // Check if any results were returned
+                    if (root.GetArrayLength() > 0)
+                    {
+                        Console.WriteLine($"{GreenText}Address validation successful!{ResetText}");
+                        Console.WriteLine("\nFound address details:");
+                        
+                        JsonElement result = root[0];
+                        
+                        // Display address components if available
+                        if (result.TryGetProperty("address", out JsonElement address))
+                        {
+                            DisplayAddressComponent(address, "road", "Street");
+                            DisplayAddressComponent(address, "city", "City");
+                            DisplayAddressComponent(address, "state", "State/Province");
+                            DisplayAddressComponent(address, "country", "Country");
+                            DisplayAddressComponent(address, "postcode", "Postal Code");
+                        }
+                        
+                        IsAddressVerified = true;
+                        return true;
+                    }
+                    
+                    Console.WriteLine($"{YellowText}Warning:{ResetText} The address could not be verified. It may not exist or there might be spelling errors.");
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"{RedText}Error validating address:{ResetText} {ex.Message}");
+                return false;
+            }
+        }
+        
+        private static void DisplayAddressComponent(JsonElement address, string key, string label)
+        {
+            if (address.TryGetProperty(key, out JsonElement value))
+            {
+                Console.WriteLine($"{label}: {value}");
+            }
         }
     }
 }
