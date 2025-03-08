@@ -13,6 +13,9 @@
         public string Barangay { get; set; }
         public int PostalCode { get; set; }
 
+        public const string RedText = "\x1b[31m";
+        public const string ResetText = "\x1b[0m";
+
         public PersonalInfo(string fname, string lname, DateTime birthday, string country, string province, string city, int houseNumber, string street, string barangay, int postalCode)
         {
             Fname = fname;
@@ -36,8 +39,7 @@
 
         public static string GetValidName(string nameType)
         {
-            const string RedText = "\x1b[31m";
-            const string ResetText = "\x1b[0m";
+
             string name;
             do
             {
@@ -53,8 +55,7 @@
 
         public static DateTime GetValidBirthdate()
         {
-            const string RedText = "\x1b[31m";
-            const string ResetText = "\x1b[0m";
+
             DateTime birthdate;
             while (true)
             {
@@ -81,8 +82,7 @@
 
         public static string GetInput(string fieldName)
         {
-            const string RedText = "\x1b[31m";
-            const string ResetText = "\x1b[0m";
+
             string input;
             do
             {
@@ -98,18 +98,29 @@
 
         public static int GetValidNumber(string fieldName)
         {
-            const string RedText = "\x1b[31m";
-            const string ResetText = "\x1b[0m";
+
             int number;
             while (true)
             {
-                Console.Write($"{fieldName}: ");
-                string input = Console.ReadLine();
-                if (int.TryParse(input, out number) && number > 0)
+                try
                 {
-                    break;
+                    Console.Write($"{fieldName}: ");
+                    string input = Console.ReadLine();
+                    if (int.TryParse(input, out number) && number > 0)
+                    {
+                        break;
+                    }
+                    Console.WriteLine($"{RedText}Error:{ResetText} Invalid {fieldName}. Please enter a valid positive number.");
                 }
-                Console.WriteLine($"{RedText}Error:{ResetText} Invalid {fieldName}. Please enter a valid positive number.");
+                catch(OverflowException)
+                {
+                    Console.WriteLine($"{RedText}Error:{ResetText} You inputted large number");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"{RedText}Error:{ResetText} unexpected error occured {ex.Message}");
+                }
+
             }
             return number;
         }

@@ -23,14 +23,14 @@ namespace PersonalInfoUnitTest
         public void TestAgeCalculation()
         {
             // Arrange
-            var person = new PersonalInfo("Jake", "Smith", new DateTime(1995, 5, 20), "Philippines", "Cebu", "Cebu City", 123, "Mango Ave", "Barangay Luz", 6000);
+            var person = new PersonalInfo("Jake", "Smith", new DateTime(1995, 12, 31), "Philippines", "Cebu", "Cebu City", 123, "Mango Ave", "Barangay Luz", 6000);
 
             // Act
             int age = person.CalculateAge();
 
             // Assert
             int expectedAge = DateTime.Today.Year - 1995;
-            if (DateTime.Today < new DateTime(DateTime.Today.Year, 5, 20))
+            if (DateTime.Today < new DateTime(DateTime.Today.Year, 12, 31))
             {
                 expectedAge--;
             }
