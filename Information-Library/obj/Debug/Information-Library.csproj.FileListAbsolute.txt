@@ -26,3 +26,9 @@ C:\C#\Basic-Information\Information-Library\bin\Debug\System.ValueTuple.xml
 C:\C#\Basic-Information\Information-Library\obj\Debug\Informat.7E54CF52.Up2Date
 C:\C#\Basic-Information\Information-Library\obj\Debug\Information-Library.dll
 C:\C#\Basic-Information\Information-Library\obj\Debug\Information-Library.pdb
+C:\C#\Basic-Information\Information-Library\bin\Debug\addressValidator.dll
+C:\C#\Basic-Information\Information-Library\bin\Debug\addressValidator.pdb
+C:\C#\Basic-Information\Information-Library\bin\Debug\addressValidator.dll.config
+C:\C#\Basic-Information\Information-Library\bin\Debug\Castle.Core.dll
+C:\C#\Basic-Information\Information-Library\bin\Debug\Moq.dll
+C:\C#\Basic-Information\Information-Library\bin\Debug\Castle.Core.xml

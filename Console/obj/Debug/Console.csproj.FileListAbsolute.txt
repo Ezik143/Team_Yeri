@@ -29,3 +29,6 @@ C:\C#\Basic-Information\Console\bin\Debug\System.Buffers.xml
 C:\C#\Basic-Information\Console\obj\Debug\Console.csproj.Up2Date
 C:\C#\Basic-Information\Console\obj\Debug\Console.exe
 C:\C#\Basic-Information\Console\obj\Debug\Console.pdb
+C:\C#\Basic-Information\Console\bin\Debug\addressValidator.dll
+C:\C#\Basic-Information\Console\bin\Debug\addressValidator.pdb
+C:\C#\Basic-Information\Console\bin\Debug\addressValidator.dll.config
