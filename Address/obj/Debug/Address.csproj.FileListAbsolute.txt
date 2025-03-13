@@ -1,2 +1,0 @@
-C:\C#\Basic-Information\Address\obj\Debug\Address.csproj.AssemblyReference.cache
-C:\C#\Basic-Information\Address\obj\Debug\Address.csproj.CoreCompileInputs.cache
