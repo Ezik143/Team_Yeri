@@ -1,104 +1,60 @@
-﻿using Information;
-using System;
-class Program
+﻿class Program
 {
-    const string RedText = "\x1b[31m";
+    const string GreenText = "\x1b[32m";
     const string ResetText = "\x1b[0m";
-    static void Main(string[] args)
+    const string CyanText = "\x1b[36m";
+
+    static async Task Main(string[] args)
     {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine($"{RedText}NAME{ResetText}");
-        Console.WriteLine();
-
-        string fname, lname;
-        do
+        try
         {
-            Console.Write("Enter your first name: ");
-            fname = Console.ReadLine();
-            Console.Write("Enter your last name: ");
-            lname = Console.ReadLine();
-            if (!PersonalInfo.IsValidName(fname, lname))
+            Console.WriteLine($"{CyanText}======================================{ResetText}");
+            Console.WriteLine($"{CyanText}   PERSONAL INFORMATION SYSTEM      {ResetText}");
+            Console.WriteLine($"{CyanText}======================================{ResetText}");
+
+            Console.WriteLine($"\n{GreenText}NAME{ResetText}");
+            Console.WriteLine();
+            string fname = Information.PersonalInfo.GetValidName("first");
+            string lname = Information.PersonalInfo.GetValidName("last");
+
+            Console.WriteLine();
+            Console.WriteLine($"{GreenText}BIRTHDATE{ResetText}");
+            Console.WriteLine();
+            DateTime birthdate = Information.PersonalInfo.GetValidBirthdate();
+
+            Console.WriteLine();
+            Console.WriteLine($"{GreenText}ADDRESS{ResetText}");
+            Console.WriteLine();
+            string country = Information.PersonalInfo.GetInput("Country");
+            string province = Information.PersonalInfo.GetInput("Province");
+            string city = Information.PersonalInfo.GetInput("City");
+            int houseNumber = Information.PersonalInfo.GetValidNumber("House Number");
+            string street = Information.PersonalInfo.GetInput("Street");
+            string barangay = Information.PersonalInfo.GetInput("Barangay");
+            int postalCode = Information.PersonalInfo.GetValidNumber("Postal Code");
+
+            Information.PersonalInfo personalInfo = new Information.PersonalInfo(fname, lname, birthdate, country, province, city, houseNumber, street, barangay, postalCode);
+
+            Console.WriteLine();
+            Console.Write("Would you like to validate your address? (Y/N): ");
+            string validateChoice = Console.ReadLine().Trim().ToUpper();
+
+            if (validateChoice == "Y")
             {
-                Console.WriteLine("Invalid name. Please enter valid names (only alphabetic characters, no spaces or numbers).");
+                await personalInfo.ValidateAddress();
             }
-        } while (!PersonalInfo.IsValidName(fname, lname));
 
-        Console.WriteLine();
-        Console.WriteLine($"{RedText}BIRTHDATE{ResetText}");
-        Console.WriteLine();
+            personalInfo.DisplayFullInfo();
 
-        int bYear, bMonth, bDay;
-
-
-        while (true)
-        {
-            Console.Write("Enter your birth year: ");
-            if (int.TryParse(Console.ReadLine(), out bYear))
-            {
-                break;
-            }
-            Console.WriteLine("Invalid year. Please enter a valid year.");
+            Console.WriteLine($"\n{CyanText}======================================{ResetText}");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
-
-
-        while (true)
+        catch (Exception ex)
         {
-            Console.Write("Enter your birth month (1-12): ");
-            if (int.TryParse(Console.ReadLine(), out bMonth) && bMonth >= 1 && bMonth <= 12)
-            {
-                break;
-            }
-            Console.WriteLine("Invalid month. Please enter a valid month (1-12).");
+            Console.WriteLine($"{Information.PersonalInfo.RedText}Error:{ResetText} An unexpected error occurred: {ex.Message}");
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
-
-
-        while (true)
-        {
-            Console.Write("Enter your birthday (1-31): ");
-            if (int.TryParse(Console.ReadLine(), out bDay) && bDay >= 1 && bDay <= 31)
-            {
-
-                if (PersonalInfo.IsValidDay(bYear, bMonth, bDay))
-                {
-                    break;
-                }
-                Console.WriteLine("Invalid day for the given month and year. Please enter a valid day.");
-            }
-            else
-            {
-                Console.WriteLine("Invalid day. Please enter a valid day (1-31).");
-            }
-        }
-
-        Console.WriteLine();
-        Console.WriteLine($"{RedText}ADDRESS{ResetText}");
-        Console.WriteLine();
-
-        Console.Write("Country: ");
-        string country = Console.ReadLine();
-        Console.Write("Province: ");
-        string province = Console.ReadLine();
-        Console.Write("City: ");
-        string city = Console.ReadLine();
-        Console.Write("House Number: ");
-        if (!int.TryParse(Console.ReadLine(), out int houseNumber))
-        {
-            Console.WriteLine("Invalid house number.");
-            return;
-        }
-        Console.Write("Street: ");
-        string street = Console.ReadLine();
-        Console.Write("Barangay: ");
-        string barangay = Console.ReadLine();
-        Console.Write("Postal Code: ");
-        if (!int.TryParse(Console.ReadLine(), out int postalCode))
-        {
-            Console.WriteLine("Invalid postal code.");
-            return;
-        }
-        PersonalInfo personalInfo = new PersonalInfo(fname, lname, new DateTime(bYear, bMonth, bDay), country, province, city, houseNumber, street, barangay, postalCode);
-        personalInfo.DisplayFullName();
-        personalInfo.DisplayAddress();
-
     }
 }
