@@ -7,6 +7,10 @@ namespace AddressValidatorLibrary
 {
     public class AddressValidator
     {
+        public const string RedText = "\x1b[31m";
+        public const string ResetText = "\x1b[0m";
+
+
         private static readonly HttpClient client = new HttpClient();
         private const string GeocodingApiUrl = "https://nominatim.openstreetmap.org/search";
 
@@ -56,13 +60,13 @@ namespace AddressValidatorLibrary
                         return true;
                     }
 
-                    Console.WriteLine("Warning: The address could not be verified. It may not exist or there might be spelling errors.");
+                    Console.WriteLine($"{RedText}Warning:{ResetText} The address could not be verified. It may not exist or there might be spelling errors.");
                     return false;
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error validating address: {ex.Message}");
+                Console.WriteLine($"{RedText}Error{ResetText} validating address: {ex.Message}");
                 return false;
             }
         }

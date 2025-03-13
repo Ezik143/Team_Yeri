@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Information;
-using AddressValidatorLibrary;
 
 namespace UnitTest
 {
