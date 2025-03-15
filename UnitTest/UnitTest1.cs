@@ -18,8 +18,7 @@ namespace UnitTest
             // Act
             bool result = PersonalInfo.IsValidName(firstName, lastName);
 
-            // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
@@ -33,7 +32,7 @@ namespace UnitTest
             bool result = PersonalInfo.IsValidName(firstName, lastName);
 
             // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse(result);
+          Assert.IsFalse(result);
         }
 
         [TestMethod]
@@ -47,7 +46,7 @@ namespace UnitTest
             bool result = PersonalInfo.IsValidName(firstName, lastName);
 
             // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse(result);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
@@ -61,7 +60,7 @@ namespace UnitTest
             bool result = PersonalInfo.IsValidName(firstName, lastName);
 
             // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse(result);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
@@ -76,7 +75,7 @@ namespace UnitTest
             bool result = PersonalInfo.IsValidDay(year, month, day);
 
             // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
@@ -91,7 +90,7 @@ namespace UnitTest
             bool result = PersonalInfo.IsValidDay(year, month, day);
 
             // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsFalse(result);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
@@ -106,7 +105,7 @@ namespace UnitTest
             bool result = PersonalInfo.IsValidDay(year, month, day);
 
             // Assert
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(result);
+            Assert.IsTrue(result);
         }
 
         [TestMethod]
@@ -124,7 +123,7 @@ namespace UnitTest
             if (DateTime.Today < new DateTime(DateTime.Today.Year, 5, 15))
                 expectedAge--;
 
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(expectedAge, age);
+            Assert.AreEqual(expectedAge, age);
         }
 
         [TestMethod]
@@ -142,7 +141,7 @@ namespace UnitTest
 
             // Assert - we're just checking if the method runs without exceptions
             // and that it sets the IsAddressVerified property
-            Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(result, person.IsAddressVerified);
+            Assert.AreEqual(result, person.IsAddressVerified);
         }
 
         [TestMethod]
@@ -162,8 +161,8 @@ namespace UnitTest
 
                 // Assert
                 string output = sw.ToString();
-                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(output.Contains("John Doe"));
-                Microsoft.VisualStudio.TestTools.UnitTesting.Assert.IsTrue(output.Contains("123 Main St"));
+                Assert.IsTrue(output.Contains("John Doe"));
+                Assert.IsTrue(output.Contains("123 Main St"));
             }
         }
     }
