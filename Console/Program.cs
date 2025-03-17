@@ -40,12 +40,8 @@ class Program
             string barangay = PersonalInfo.GetInput("Barangay");
             int postalCode = PersonalInfo.GetValidNumber("Postal Code");
 
-<<<<<<< HEAD
             PersonalInfo personalInfo = new PersonalInfo(fname, lname, birthdate, country, province, city, houseNumber, street, barangay, postalCode);
-=======
-            // Store the information in an object
-            Information.PersonalInfo personalInfo = new Information.PersonalInfo(fname, lname, birthdate, country, province, city, houseNumber, street, barangay, postalCode);
->>>>>>> origin/code_MSQL
+
 
             Console.WriteLine();
             Console.Write("Would you like to validate your address? (Y/N): ");
@@ -73,7 +69,7 @@ class Program
         }
     }
 
-    static void SaveToDatabase(Information.PersonalInfo info)
+    static void SaveToDatabase(PersonalInfo info)
     {
         string connectionString = "server=localhost;database=mydb;user=root;password=D0min1c;";
         using (MySqlConnection conn = new MySqlConnection(connectionString))
