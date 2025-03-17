@@ -1,6 +1,9 @@
-﻿using System.Threading.Tasks;
-using System;
+﻿using System;
+using System.Threading.Tasks;
+using MySql.Data.MySqlClient;
 using Information;
+using System.Data.SqlClient;
+
 class Program
 {
     const string GreenText = "\x1b[32m";
@@ -15,6 +18,7 @@ class Program
             Console.WriteLine($"{CyanText}   PERSONAL INFORMATION SYSTEM      {ResetText}");
             Console.WriteLine($"{CyanText}======================================{ResetText}");
 
+            // Get Personal Information from User
             Console.WriteLine($"\n{GreenText}NAME{ResetText}");
             Console.WriteLine();
             string fname = PersonalInfo.GetValidName("first");
@@ -36,7 +40,12 @@ class Program
             string barangay = PersonalInfo.GetInput("Barangay");
             int postalCode = PersonalInfo.GetValidNumber("Postal Code");
 
+<<<<<<< HEAD
             PersonalInfo personalInfo = new PersonalInfo(fname, lname, birthdate, country, province, city, houseNumber, street, barangay, postalCode);
+=======
+            // Store the information in an object
+            Information.PersonalInfo personalInfo = new Information.PersonalInfo(fname, lname, birthdate, country, province, city, houseNumber, street, barangay, postalCode);
+>>>>>>> origin/code_MSQL
 
             Console.WriteLine();
             Console.Write("Would you like to validate your address? (Y/N): ");
@@ -46,6 +55,9 @@ class Program
             {
                 await personalInfo.ValidateAddress();
             }
+
+            // Save to MySQL Database
+            SaveToDatabase(personalInfo);
 
             personalInfo.DisplayFullInfo();
 
@@ -58,6 +70,37 @@ class Program
             Console.WriteLine($"{PersonalInfo.RedText}Error:{ResetText} An unexpected error occurred: {ex.Message}");
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
+        }
+    }
+
+    static void SaveToDatabase(Information.PersonalInfo info)
+    {
+        string connectionString = "server=localhost;database=mydb;user=root;password=D0min1c;";
+        using (MySqlConnection conn = new MySqlConnection(connectionString))
+        {
+            conn.Open();
+
+            string query = @"INSERT INTO PersonalInfo (FirstName, LastName, Birthdate, Country, Province, City, HouseNumber, Street, Barangay, PostalCode) 
+                             VALUES (@FirstName, @LastName, @Birthdate, @Country, @Province, @City, @HouseNumber, @Street, @Barangay, @PostalCode)"
+            ;
+
+            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+            {
+                cmd.Parameters.AddWithValue("@FirstName", info.Fname);
+                cmd.Parameters.AddWithValue("@LastName", info.Lname);
+                cmd.Parameters.AddWithValue("@Birthdate", info.Birthday);
+                cmd.Parameters.AddWithValue("@Country", info.Country);
+                cmd.Parameters.AddWithValue("@Province", info.Province);
+                cmd.Parameters.AddWithValue("@City", info.City);
+                cmd.Parameters.AddWithValue("@HouseNumber", info.HouseNumber);
+                cmd.Parameters.AddWithValue("@Street", info.Street);
+                cmd.Parameters.AddWithValue("@Barangay", info.Barangay);
+                cmd.Parameters.AddWithValue("@PostalCode", info.PostalCode);
+
+                cmd.ExecuteNonQuery();
+            }
+
+            Console.WriteLine($"{GreenText}Data successfully saved to the database!{ResetText}");
         }
     }
 }
