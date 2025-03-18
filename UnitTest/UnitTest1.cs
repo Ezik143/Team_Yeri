@@ -12,8 +12,8 @@ namespace UnitTest
         public void IsValidName_ValidNames_ReturnsTrue()
         {
             // Arrange
-            string firstName = "john";
-            string lastName = "Doe";
+            string firstName = "Jake";
+            string lastName = "Smith";
 
             // Act
             bool result = PersonalInfo.IsValidName(firstName, lastName);
@@ -26,20 +26,20 @@ namespace UnitTest
         {
             // Arrange
             string firstName = "";
-            string lastName = "Doe";
+            string lastName = "Smith";
 
             // Act
             bool result = PersonalInfo.IsValidName(firstName, lastName);
 
             // Assert
-          Assert.IsFalse(result);
+            Assert.IsFalse(result);
         }
 
         [TestMethod]
         public void IsValidName_EmptyLastName_ReturnsFalse()
         {
             // Arrange
-            string firstName = "John";
+            string firstName = "Jake";
             string lastName = "";
 
             // Act
@@ -53,8 +53,8 @@ namespace UnitTest
         public void IsValidName_NameWithNumbers_ReturnsFalse()
         {
             // Arrange
-            string firstName = "John123";
-            string lastName = "Doe";
+            string firstName = "Jake123";
+            string lastName = "Smith";
 
             // Act
             bool result = PersonalInfo.IsValidName(firstName, lastName);
@@ -68,8 +68,8 @@ namespace UnitTest
         {
             // Arrange
             int year = 2023;
-            int month = 2;
-            int day = 28;
+            int month = 8;
+            int day = 15;
 
             // Act
             bool result = PersonalInfo.IsValidDay(year, month, day);
@@ -84,7 +84,7 @@ namespace UnitTest
             // Arrange
             int year = 2023;
             int month = 2;
-            int day = 29; // Not a leap year
+            int day = 30; // Invalid date
 
             // Act
             bool result = PersonalInfo.IsValidDay(year, month, day);
@@ -112,15 +112,18 @@ namespace UnitTest
         public void CalculateAge_ReturnCorrectAge()
         {
             // Arrange
-            DateTime birthdate = new DateTime(1990, 5, 15);
-            PersonalInfo person = new PersonalInfo("John", "Doe", birthdate, "USA", "California", "Los Angeles", 123, "Main St", "Downtown", 90001);
+            DateTime birthdate = new DateTime(1995, 8, 15);
+            PersonalInfo person = new PersonalInfo(
+                "Jake", "Smith", birthdate,
+                "Philippines", "Central Visayas", "Cebu",
+                456, "Mango Avenue", "Barangay Lahug", 6000);
 
             // Act
             int age = person.CalculateAge();
 
             // Assert
-            int expectedAge = DateTime.Today.Year - 1990;
-            if (DateTime.Today < new DateTime(DateTime.Today.Year, 5, 15))
+            int expectedAge = DateTime.Today.Year - 1995;
+            if (DateTime.Today < new DateTime(DateTime.Today.Year, 8, 15))
                 expectedAge--;
 
             Assert.AreEqual(expectedAge, age);
@@ -132,8 +135,9 @@ namespace UnitTest
             // This test is simplified to avoid HTTP-related issues
             // Arrange
             PersonalInfo person = new PersonalInfo(
-                "John", "Doe", new DateTime(1990, 5, 15),
-                "USA", "California", "Los Angeles", 123, "Main St", "Downtown", 90001);
+                "Jake", "Smith", new DateTime(1995, 8, 15),
+                "Philippines", "Central Visayas", "Cebu",
+                456, "Mango Avenue", "Barangay Lahug", 6000);
 
             // Act
             bool initialState = person.IsAddressVerified;
@@ -149,8 +153,9 @@ namespace UnitTest
         {
             // Arrange
             PersonalInfo person = new PersonalInfo(
-                "John", "Doe", new DateTime(1990, 5, 15),
-                "USA", "California", "Los Angeles", 123, "Main St", "Downtown", 90001);
+                "Jake", "Smith", new DateTime(1995, 8, 15),
+                "Philippines", "Central Visayas", "Cebu",
+                456, "Mango Avenue", "Barangay Lahug", 6000);
 
             using (var sw = new System.IO.StringWriter())
             {
@@ -161,8 +166,8 @@ namespace UnitTest
 
                 // Assert
                 string output = sw.ToString();
-                Assert.IsTrue(output.Contains("John Doe"));
-                Assert.IsTrue(output.Contains("123 Main St"));
+                Assert.IsTrue(output.Contains("Jake Smith"));
+                Assert.IsTrue(output.Contains("456 Mango Avenue"));
             }
         }
     }

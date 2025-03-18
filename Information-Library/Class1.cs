@@ -85,6 +85,10 @@ namespace Information
                     {
                         Console.WriteLine($"{RedText}Error:{ResetText} Birthdate cannot be in the future. Please enter a valid date.");
                     }
+                    else if (birthdate < new DateTime(1900,1,1))
+                    {
+                        Console.WriteLine($"{RedText}Error{ResetText}: Birthdate cannot be earlier than 1900. Please enter a valid date.");
+                    }
                     else
                     {
                         break;
