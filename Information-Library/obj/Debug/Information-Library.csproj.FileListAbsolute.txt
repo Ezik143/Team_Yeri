@@ -102,3 +102,5 @@ C:\C#\Basic-Information\Information-Library\bin\Debug\K4os.Hash.xxHash.xml
 C:\C#\Basic-Information\Information-Library\bin\Debug\MySql.Data.xml
 C:\C#\Basic-Information\Information-Library\bin\Debug\System.Configuration.ConfigurationManager.xml
 C:\C#\Basic-Information\Information-Library\bin\Debug\System.Diagnostics.DiagnosticSource.xml
+C:\C#\Basic-Information\Information-Library\bin\Debug\IAddressValidator Interface.dll
+C:\C#\Basic-Information\Information-Library\bin\Debug\IAddressValidator Interface.pdb

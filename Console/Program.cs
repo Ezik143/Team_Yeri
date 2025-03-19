@@ -1,8 +1,9 @@
 ﻿using System;
-using System.Threading.Tasks;
-using MySql.Data.MySqlClient;
-using Information;
-using System.Data.SqlClient;
+using System.Threading.Tasks; //for async and task
+using MySql.Data.MySqlClient;// for MySQL
+using Information; // for PersonalInfo
+using AddressValidatorLibrary;// for AddressValidator
+using System.Net.Http; // for HttpClient to send HTTP requests
 
 class Program
 {
@@ -10,6 +11,9 @@ class Program
     const string ResetText = "\x1b[0m";
     const string CyanText = "\x1b[36m";
 
+
+    //async for the await keyword and short for asynchronous 
+    //task for the return type while waiting for the task to complete(anything that has await)
     static async Task Main(string[] args)
     {
         try
@@ -40,14 +44,19 @@ class Program
             string barangay = PersonalInfo.GetInput("Barangay");
             int postalCode = PersonalInfo.GetValidNumber("Postal Code");
 
-            PersonalInfo personalInfo = new PersonalInfo(fname, lname, birthdate, country, province, city, houseNumber, street, barangay, postalCode);
+            // Create HttpClient with appropriate timeout
+            var httpClient = new HttpClient();
+            httpClient.Timeout = TimeSpan.FromSeconds(10);
 
+            // Create services with DI
+            IAddressValidator addressValidator = new AddressValidator(httpClient);
 
-            Console.WriteLine();
-            Console.Write("Would you like to validate your address? (Y/N): ");
-            string validateChoice = Console.ReadLine().Trim().ToUpper();
+            PersonalInfo personalInfo = new PersonalInfo(
+                fname, lname, birthdate, country, province, city,
+                houseNumber, street, barangay, postalCode,
+                addressValidator);
 
-            if (validateChoice == "Y")
+            if (PersonalInfo.Choices() == 'Y')
             {
                 await personalInfo.ValidateAddress();
             }
@@ -79,8 +88,7 @@ class Program
             conn.Open();
 
             string query = @"INSERT INTO PersonalInfo (FirstName, LastName, Birthdate, Country, Province, City, HouseNumber, Street, Barangay, PostalCode, IsAddressVerified) 
-                             VALUES (@FirstName, @LastName, @Birthdate, @Country, @Province, @City, @HouseNumber, @Street, @Barangay, @PostalCode,@IsAddressVerified)"
-            ;
+                             VALUES (@FirstName, @LastName, @Birthdate, @Country, @Province, @City, @HouseNumber, @Street, @Barangay, @PostalCode,@IsAddressVerified)";
 
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
             {

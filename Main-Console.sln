@@ -13,6 +13,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Information", "Information"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "addressValidator", "addressValidator\addressValidator.csproj", "{10320F2F-EC93-4B49-9658-45AFA5AEC7A8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IAddressValidator Interface", "IAddressValidator Interface\IAddressValidator Interface.csproj", "{5F55676B-97D8-4681-A5C0-4A8A4B9EA013}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{10320F2F-EC93-4B49-9658-45AFA5AEC7A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10320F2F-EC93-4B49-9658-45AFA5AEC7A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10320F2F-EC93-4B49-9658-45AFA5AEC7A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F55676B-97D8-4681-A5C0-4A8A4B9EA013}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F55676B-97D8-4681-A5C0-4A8A4B9EA013}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F55676B-97D8-4681-A5C0-4A8A4B9EA013}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F55676B-97D8-4681-A5C0-4A8A4B9EA013}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,6 +48,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{1AB1FE0D-41BD-43AB-9326-004B0F5A7469} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 		{10320F2F-EC93-4B49-9658-45AFA5AEC7A8} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
+		{5F55676B-97D8-4681-A5C0-4A8A4B9EA013} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {908B530A-DE22-48B5-B9AB-6440998E1735}

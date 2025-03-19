@@ -1,23 +1,26 @@
 ﻿using System;
-using System.Net.Http;
-using System.Text.Json;
+using System.Net.Http; // for HttpClient to send HTTP requests https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httpclient?view=netframework-4.8
+using System.Text.Json; // for JSON parsing https://zetcode.com/csharp/json/
 using System.Threading.Tasks;
-
+ 
 namespace AddressValidatorLibrary
 {
-    public class AddressValidator
+    public class AddressValidator : IAddressValidator //dependency injection and unit testing purposes TABANG SAINT DON BOSCO
     {
         public const string RedText = "\x1b[31m";
         public const string ResetText = "\x1b[0m";
-
-
-        private static readonly HttpClient client = new HttpClient();
+        private readonly HttpClient _client;
         private const string GeocodingApiUrl = "https://nominatim.openstreetmap.org/search";
 
-        static AddressValidator()
+        public AddressValidator(HttpClient client = null)//client = null for dependency injection and unit testing purposes
         {
+            _client = client ?? new HttpClient();
+
             // Set user agent to comply with OSM Nominatim usage policy
-            client.DefaultRequestHeaders.Add("User-Agent", "AddressValidatorApp/1.0");
+            if (!_client.DefaultRequestHeaders.Contains("User-Agent"))//check if the header already exists if not then mo sud siya sa if statement.
+            {
+                _client.DefaultRequestHeaders.Add("User-Agent", "AddressValidatorApp/1.0");//•	Purpose: The "User-Agent" header is used in HTTP requests to identify the client software making the request. "AddressValidatorApp/1.0" is our app name
+            }
         }
 
         public async Task<bool> ValidateAddressAsync(string houseNumber, string street, string city, string province, int postalCode, string country)
@@ -26,27 +29,21 @@ namespace AddressValidatorLibrary
             {
                 // Build the address query string
                 string addressQuery = $"{houseNumber} {street}, {city}, {province}, {postalCode}, {country}";
-
                 // Create URL with parameters
                 string requestUrl = $"{GeocodingApiUrl}?q={Uri.EscapeDataString(addressQuery)}&format=json&addressdetails=1&limit=1";
-
                 // Send the request
-                HttpResponseMessage response = await client.GetAsync(requestUrl);
+                HttpResponseMessage response = await _client.GetAsync(requestUrl);
                 response.EnsureSuccessStatusCode();
-
                 // Get the response content
                 string responseBody = await response.Content.ReadAsStringAsync();
-
                 // Parse JSON response
                 using (JsonDocument doc = JsonDocument.Parse(responseBody))
                 {
                     JsonElement root = doc.RootElement;
-
                     // Check if any results were returned
                     if (root.GetArrayLength() > 0)
                     {
                         JsonElement result = root[0];
-
                         // Display address components if available
                         if (result.TryGetProperty("address", out JsonElement address))
                         {
@@ -56,10 +53,8 @@ namespace AddressValidatorLibrary
                             DisplayAddressComponent(address, "country", "Country");
                             DisplayAddressComponent(address, "postcode", "Postal Code");
                         }
-
                         return true;
                     }
-
                     Console.WriteLine($"{RedText}Warning:{ResetText} The address could not be verified. It may not exist or there might be spelling errors.");
                     return false;
                 }
@@ -70,8 +65,10 @@ namespace AddressValidatorLibrary
                 return false;
             }
         }
-
-        private static void DisplayAddressComponent(JsonElement address, string key, string label)
+        //JsonElement address: The JSON object containing the address components.
+        //string key: The key of the address component to display.
+        //string label: The label to display before the address component value.
+        private static void DisplayAddressComponent(JsonElement address, string key, string label) 
         {
             if (address.TryGetProperty(key, out JsonElement value))
             {

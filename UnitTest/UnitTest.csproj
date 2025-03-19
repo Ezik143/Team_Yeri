@@ -180,6 +180,10 @@
       <Project>{c8e15e58-c98b-4679-8a6b-41bffbff1305}</Project>
       <Name>Console-App</Name>
     </ProjectReference>
+    <ProjectReference Include="..\IAddressValidator Interface\IAddressValidator Interface.csproj">
+      <Project>{5f55676b-97d8-4681-a5c0-4a8a4b9ea013}</Project>
+      <Name>IAddressValidator Interface</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Information-Library\Information-Library.csproj">
       <Project>{1ab1fe0d-41bd-43ab-9326-004b0f5a7469}</Project>
       <Name>Information-Library</Name>
