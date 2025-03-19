@@ -71,13 +71,15 @@ class Program
 
     static void SaveToDatabase(PersonalInfo info)
     {
-        string connectionString = "server=localhost;database=mydb;user=root;password=D0min1c;";
+        //set this to your MySQL password before running the program or set it as an environment variable hehehe.
+        string password = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
+        string connectionString = $"server=localhost;database=basicinformationdb;user=root;password={password};";
         using (MySqlConnection conn = new MySqlConnection(connectionString))
         {
             conn.Open();
 
-            string query = @"INSERT INTO PersonalInfo (FirstName, LastName, Birthdate, Country, Province, City, HouseNumber, Street, Barangay, PostalCode) 
-                             VALUES (@FirstName, @LastName, @Birthdate, @Country, @Province, @City, @HouseNumber, @Street, @Barangay, @PostalCode)"
+            string query = @"INSERT INTO PersonalInfo (FirstName, LastName, Birthdate, Country, Province, City, HouseNumber, Street, Barangay, PostalCode, IsAddressVerified) 
+                             VALUES (@FirstName, @LastName, @Birthdate, @Country, @Province, @City, @HouseNumber, @Street, @Barangay, @PostalCode,@IsAddressVerified)"
             ;
 
             using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -92,7 +94,7 @@ class Program
                 cmd.Parameters.AddWithValue("@Street", info.Street);
                 cmd.Parameters.AddWithValue("@Barangay", info.Barangay);
                 cmd.Parameters.AddWithValue("@PostalCode", info.PostalCode);
-
+                cmd.Parameters.AddWithValue("@IsAddressVerified", info.IsAddressVerified);
                 cmd.ExecuteNonQuery();
             }
 
