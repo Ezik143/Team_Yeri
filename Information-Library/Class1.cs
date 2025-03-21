@@ -67,24 +67,7 @@ namespace Information
                 Console.WriteLine($"{YellowText}Address Status: Not Verified{ResetText}");
         }
 
-        public static string GetValidName(string nameType)
-        {
-            string name;
-            do
-            {
-                Console.Write($"Enter your {nameType} name: ");
-                name = Console.ReadLine();
-                if (string.IsNullOrWhiteSpace(name) || !name.All(char.IsLetter))
-                {
-                    Console.WriteLine($"{RedText}Error:{ResetText} Invalid name. Please enter a valid name (only alphabetic characters, no spaces or numbers).");
-                }
-                else if (name.Length > 60)
-                {
-                    Console.WriteLine($"{RedText}Error:{ResetText} Name is too long. Please enter a name with less than 60 characters.");
-                }
-            } while (string.IsNullOrWhiteSpace(name) || !name.All(char.IsLetter) || name.Length > 60);
-            return name;
-        }
+
 
         public static DateTime GetValidBirthdate()
         {
@@ -115,7 +98,26 @@ namespace Information
             }
             return birthdate;
         }
+        public static string GetValidName(string nameType)
+        {
+            string name;
+            do
+            {
+                Console.Write($"Enter your {nameType} name: ");
+                name = Console.ReadLine()?.Trim();  // Trim extra spaces to prevent empty input issues
 
+                if (string.IsNullOrWhiteSpace(name) || !name.All(char.IsLetter))
+                {
+                    Console.WriteLine("Error: Invalid name. Please enter a valid name (only letters).");
+                }
+                else if (name.Length > 60)
+                {
+                    Console.WriteLine("Error: Name is too long. Enter less than 60 characters.");
+                }
+            } while (string.IsNullOrWhiteSpace(name) || !name.All(char.IsLetter) || name.Length > 60);
+
+            return name;
+        }
         public static string GetInput(string fieldName)
         {
             string input;
@@ -166,22 +168,6 @@ namespace Information
                 age--;
             }
             return age;
-        }
-
-        public static char Choices()
-        {
-            char choice;
-            do
-            {
-                Console.Write("Would you like to validate your address? (Y/N): ");
-                choice = Console.ReadKey().KeyChar; // Read the first character of the input 
-                Console.WriteLine();
-                if (choice == 'Y' || choice == 'y' || choice == 'N' || choice == 'n')
-                {
-                    return char.ToUpper(choice);
-                }
-                Console.WriteLine($"{RedText}Error:{ResetText} Invalid choice. Please enter Y or N.");
-            } while (true);
         }
 
         public async Task<bool> ValidateAddress()

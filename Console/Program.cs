@@ -56,10 +56,8 @@ class Program
                 houseNumber, street, barangay, postalCode,
                 addressValidator);
 
-            if (PersonalInfo.Choices() == 'Y')
-            {
-                await personalInfo.ValidateAddress();
-            }
+            await personalInfo.ValidateAddress();
+            
 
             // Save to MySQL Database
             SaveToDatabase(personalInfo);

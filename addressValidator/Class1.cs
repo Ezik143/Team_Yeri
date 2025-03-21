@@ -43,16 +43,7 @@ namespace AddressValidatorLibrary
                     // Check if any results were returned
                     if (root.GetArrayLength() > 0)
                     {
-                        JsonElement result = root[0];
-                        // Display address components if available
-                        if (result.TryGetProperty("address", out JsonElement address))
-                        {
-                            DisplayAddressComponent(address, "road", "Street");
-                            DisplayAddressComponent(address, "city", "City");
-                            DisplayAddressComponent(address, "state", "State/Province");
-                            DisplayAddressComponent(address, "country", "Country");
-                            DisplayAddressComponent(address, "postcode", "Postal Code");
-                        }
+
                         return true;
                     }
                     Console.WriteLine($"{RedText}Warning:{ResetText} The address could not be verified. It may not exist or there might be spelling errors.");
@@ -63,16 +54,6 @@ namespace AddressValidatorLibrary
             {
                 Console.WriteLine($"{RedText}Error{ResetText} validating address: {ex.Message}");
                 return false;
-            }
-        }
-        //JsonElement address: The JSON object containing the address components.
-        //string key: The key of the address component to display.
-        //string label: The label to display before the address component value.
-        private static void DisplayAddressComponent(JsonElement address, string key, string label) 
-        {
-            if (address.TryGetProperty(key, out JsonElement value))
-            {
-                Console.WriteLine($"{label}: {value}");
             }
         }
     }

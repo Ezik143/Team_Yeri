@@ -2,7 +2,6 @@
 
 namespace AddressValidatorLibrary
 {
-    // Interface for AddressValidator
     // For Dependency Injection and Unit Testing
     public interface IAddressValidator
     {
