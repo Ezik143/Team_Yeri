@@ -25,6 +25,7 @@ namespace AddressValidatorLibrary
 
         public async Task<bool> ValidateAddressAsync(string houseNumber, string street, string city, string province, int postalCode, string country)
         {
+
             try
             {
                 // Build the address query string
