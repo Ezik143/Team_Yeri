@@ -109,17 +109,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\addressValidator\addressValidator.csproj">
-      <Project>{10320f2f-ec93-4b49-9658-45afa5aec7a8}</Project>
-      <Name>addressValidator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\IAddressValidator Interface\IAddressValidator Interface.csproj">
-      <Project>{5f55676b-97d8-4681-a5c0-4a8a4b9ea013}</Project>
-      <Name>IAddressValidator Interface</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Information-Library\Information-Library.csproj">
-      <Project>{1ab1fe0d-41bd-43ab-9326-004b0f5a7469}</Project>
-      <Name>Information-Library</Name>
+    <ProjectReference Include="..\Basic-information-library\Basic-information-library.csproj">
+      <Project>{20ab4da0-24cd-40b6-b36d-6330d7349301}</Project>
+      <Name>Basic-information-library</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

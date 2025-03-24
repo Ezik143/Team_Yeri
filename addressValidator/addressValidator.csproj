@@ -109,11 +109,5 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\IAddressValidator Interface\IAddressValidator Interface.csproj">
-      <Project>{5f55676b-97d8-4681-a5c0-4a8a4b9ea013}</Project>
-      <Name>IAddressValidator Interface</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
