@@ -35,3 +35,11 @@ C:\C#\Basic-Information\Main-Console\obj\Debug\net9.0\refint\Main-Console.dll
 C:\C#\Basic-Information\Main-Console\obj\Debug\net9.0\Main-Console.pdb
 C:\C#\Basic-Information\Main-Console\obj\Debug\net9.0\Main-Console.genruntimeconfig.cache
 C:\C#\Basic-Information\Main-Console\obj\Debug\net9.0\ref\Main-Console.dll
+C:\Users\dominic\source\repos\TEAMYERI\Main-Console\obj\Debug\net9.0\Main-Console.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dominic\source\repos\TEAMYERI\Main-Console\obj\Debug\net9.0\Main-Console.AssemblyInfoInputs.cache
+C:\Users\dominic\source\repos\TEAMYERI\Main-Console\obj\Debug\net9.0\Main-Console.AssemblyInfo.cs
+C:\Users\dominic\source\repos\TEAMYERI\Main-Console\obj\Debug\net9.0\Main-Console.csproj.CoreCompileInputs.cache
+C:\Users\dominic\source\repos\TEAMYERI\Main-Console\obj\Debug\net9.0\Main-Console.sourcelink.json
+C:\Users\dominic\source\repos\TEAMYERI\Main-Console\obj\Debug\net9.0\Main-Console.dll
+C:\Users\dominic\source\repos\TEAMYERI\Main-Console\obj\Debug\net9.0\refint\Main-Console.dll
+C:\Users\dominic\source\repos\TEAMYERI\Main-Console\obj\Debug\net9.0\Main-Console.pdb

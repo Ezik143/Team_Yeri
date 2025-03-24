@@ -4,7 +4,7 @@ using MySql.Data.MySqlClient;// for MySQL
 using Information; // for PersonalInfo
 using AddressValidatorLibrary;// for AddressValidator
 using System.Net.Http; // for HttpClient to send HTTP requests
-
+using System.Data.Entity;
 class Program
 {
     const string GreenText = "\x1b[32m";
@@ -79,8 +79,8 @@ class Program
     static void SaveToDatabase(PersonalInfo info)
     {
         //set this to your MySQL password before running the program or set it as an environment variable hehehe.
-        string password = Environment.GetEnvironmentVariable("MYSQL_PASSWORD");
-        string connectionString = $"server=localhost;database=basicinformationdb;user=root;password={password};";
+        string password = Environment.GetEnvironmentVariable("MYSQL_PWD");
+        string connectionString = $"server=localhost;database=mydb;user=root;password={password};";
         using (MySqlConnection conn = new MySqlConnection(connectionString))
         {
             conn.Open();
@@ -93,7 +93,7 @@ class Program
                 cmd.Parameters.AddWithValue("@FirstName", info.Fname);
                 cmd.Parameters.AddWithValue("@LastName", info.Lname);
                 cmd.Parameters.AddWithValue("@Birthdate", info.Birthday);
-                cmd.Parameters.AddWithValue("@Country", info.Country);
+                cmd.Parameters.AddWithValue("@Country", info.Country);  
                 cmd.Parameters.AddWithValue("@Province", info.Province);
                 cmd.Parameters.AddWithValue("@City", info.City);
                 cmd.Parameters.AddWithValue("@HouseNumber", info.HouseNumber);

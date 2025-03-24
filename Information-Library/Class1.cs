@@ -2,13 +2,20 @@
 using System.Linq;
 using System.Threading.Tasks;
 using AddressValidatorLibrary;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Castle.Components.DictionaryAdapter;
+
 
 namespace Information
 {
+    [Table("personalinfo")]
     public class PersonalInfo
     {
         private readonly IAddressValidator _addressValidator;
         // Properties
+        [System.ComponentModel.DataAnnotations.Key]
+        public int Id { get; set; }
         public string Fname { get; set; }
         public string Lname { get; set; }
         public DateTime Birthday { get; set; }
@@ -19,7 +26,7 @@ namespace Information
         public string Street { get; set; }
         public string Barangay { get; set; }
         public int PostalCode { get; set; }
-        public bool IsAddressVerified { get; set; }
+        public bool IsAddressVerified { get; set; } 
 
         public const string RedText = "\x1b[31m";
         public const string GreenText = "\x1b[32m";

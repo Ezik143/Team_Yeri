@@ -1,5 +1,5 @@
 ﻿using System;
-using System.IO;// for stringwriter and stringreader
+using System.IO;
 using System.Threading.Tasks;
 using System.Net.Http;
 using Microsoft.VisualStudio.TestTools.UnitTesting;

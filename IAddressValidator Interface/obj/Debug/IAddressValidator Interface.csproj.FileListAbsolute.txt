@@ -4,3 +4,9 @@ C:\C#\Basic-Information\IAddressValidator Interface\obj\Debug\IAddressValidator 
 C:\C#\Basic-Information\IAddressValidator Interface\obj\Debug\IAddressValidator Interface.csproj.CoreCompileInputs.cache
 C:\C#\Basic-Information\IAddressValidator Interface\obj\Debug\IAddressValidator Interface.dll
 C:\C#\Basic-Information\IAddressValidator Interface\obj\Debug\IAddressValidator Interface.pdb
+C:\Users\dominic\source\repos\TEAMYERI\IAddressValidator Interface\bin\Debug\IAddressValidator Interface.dll
+C:\Users\dominic\source\repos\TEAMYERI\IAddressValidator Interface\bin\Debug\IAddressValidator Interface.pdb
+C:\Users\dominic\source\repos\TEAMYERI\IAddressValidator Interface\obj\Debug\IAddressValidator Interface.csproj.AssemblyReference.cache
+C:\Users\dominic\source\repos\TEAMYERI\IAddressValidator Interface\obj\Debug\IAddressValidator Interface.csproj.CoreCompileInputs.cache
+C:\Users\dominic\source\repos\TEAMYERI\IAddressValidator Interface\obj\Debug\IAddressValidator Interface.dll
+C:\Users\dominic\source\repos\TEAMYERI\IAddressValidator Interface\obj\Debug\IAddressValidator Interface.pdb
