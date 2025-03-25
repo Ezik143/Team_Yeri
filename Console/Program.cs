@@ -94,11 +94,9 @@ class Program
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
-        catch (Exception ex)
+        catch (ArgumentException ex)
         {
-            Console.WriteLine($"{PersonalInfo.RedText}Error:{ResetText} An unexpected error occurred: {ex.Message}");
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            Console.WriteLine($"{PersonalInfo.RedText}Error:{PersonalInfo.ResetText} {ex.Message}");
         }
         finally
         {

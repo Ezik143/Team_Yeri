@@ -45,6 +45,8 @@ namespace Basic_information_library.Models
             if (lname == null) throw new ArgumentNullException(nameof(lname));
             if (fname.Length > 60) throw new ArgumentException("First name is too long", nameof(fname));
             if (lname.Length > 60) throw new ArgumentException("Last name is too long", nameof(lname));
+            if (birthday > DateTime.Today)
+                throw new ArgumentException("Birthday cannot be in the future", nameof(birthday));
 
             Fname = fname;
             Lname = lname;
@@ -111,79 +113,55 @@ namespace Basic_information_library.Models
 
         public static string GetValidName(string nameType)
         {
-            string name;
-            do
+            // Validate name length
+            if (nameType == null)
+                throw new ArgumentNullException(nameof(nameType), "Name type cannot be null");
+
+            while (true)
             {
-                Console.Write($"Enter your {nameType} name: ");
-                name = Console.ReadLine()?.Trim();  // Trim extra spaces to prevent empty input issues
+                string name = Console.ReadLine()?.Trim();
 
                 if (string.IsNullOrWhiteSpace(name))
-                {
-                    Console.WriteLine($"{RedText}Error:{ResetText} Name cannot be empty. Please enter a valid name.");
-                    continue;
-                }
+                    throw new ArgumentException($"{nameType} name cannot be empty.");
 
                 if (!name.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)))
-                {
-                    Console.WriteLine($"{RedText}Error:{ResetText} Invalid name. Please enter a valid name (only letters and spaces).");
-                }
-                else if (name.Length > 60)
-                {
-                    Console.WriteLine($"{RedText}Error:{ResetText} Name is too long. Enter less than 60 characters.");
-                }
-            } while (string.IsNullOrWhiteSpace(name) ||
-                    !name.All(c => char.IsLetter(c) || char.IsWhiteSpace(c)) ||
-                    name.Length > 60);
+                    throw new ArgumentException($"Invalid {nameType} name. Only letters and spaces are allowed.");
 
-            return name;
+                if (name.Length > 60)
+                    throw new ArgumentException($"{nameType} name must be less than 60 characters.");
+
+                return name;
+            }
         }
+
 
         public static string GetInput(string fieldName)
         {
-            string input;
-            do
-            {
-                Console.Write($"{fieldName}: ");
-                input = Console.ReadLine()?.Trim();
-                if (string.IsNullOrWhiteSpace(input))
-                {
-                    Console.WriteLine($"{RedText}Error:{ResetText} {fieldName} cannot be empty. Please enter a valid value.");
-                }
-            } while (string.IsNullOrWhiteSpace(input));
+            if (fieldName == null)
+                throw new ArgumentNullException(nameof(fieldName), "Field name cannot be null");
+
+            string input = Console.ReadLine()?.Trim();
+
+            if (string.IsNullOrWhiteSpace(input))
+                throw new ArgumentException($"{fieldName} cannot be empty.");
+
             return input;
         }
 
+
         public static int GetValidNumber(string fieldName)
         {
-            int number;
-            while (true)
-            {
-                try
-                {
-                    Console.Write($"{fieldName}: ");
-                    string input = Console.ReadLine();
+            if (fieldName == null)
+                throw new ArgumentNullException(nameof(fieldName), "Field name cannot be null");
 
-                    if (string.IsNullOrWhiteSpace(input))
-                    {
-                        Console.WriteLine($"{RedText}Error:{ResetText} {fieldName} cannot be empty. Please enter a valid number.");
-                        continue;
-                    }
+            string input = Console.ReadLine()?.Trim();
 
-                    if (int.TryParse(input, out number) && number > 0)
-                    {
-                        break;
-                    }
-                    Console.WriteLine($"{RedText}Error:{ResetText} Invalid {fieldName}. Please enter a valid positive number.");
-                }
-                catch (OverflowException)
-                {
-                    Console.WriteLine($"{RedText}Error:{ResetText} You inputted a number that is too large.");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"{RedText}Error:{ResetText} Unexpected error occurred: {ex.Message}");
-                }
-            }
+            if (string.IsNullOrWhiteSpace(input))
+                throw new ArgumentException($"{fieldName} cannot be empty.");
+
+            if (!int.TryParse(input, out int number) || number <= 0)
+                throw new ArgumentException($"Invalid {fieldName}. Please enter a valid positive number.");
+
             return number;
         }
 
