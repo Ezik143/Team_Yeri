@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AddressValidatorLibrary;
 using Basic_information_library.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.IO;
 using Basic_information_library.Models;
 
 namespace UnitTest
@@ -424,6 +425,111 @@ namespace UnitTest
     [TestClass]
     public class personalInfoUnitTests
     {
+
+        [TestMethod]
+        public void GetValidBirthdate_WithValidInput_ReturnsCorrectDate()
+        {
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                using (var sr = new StringReader("2000-01-01\n"))
+                {
+                    Console.SetIn(sr);
+                    DateTime result = PersonalInfo.GetValidBirthdate();
+                    Assert.AreEqual(new DateTime(2000, 1, 1), result);
+                }
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetValidName_WithInvalidInput_ThrowsArgumentException()
+        {
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                using (var sr = new StringReader("123\n"))
+                {
+                    Console.SetIn(sr);
+                    PersonalInfo.GetValidName("First");
+                }
+            }
+        }
+
+        [TestMethod]
+        public void GetValidName_WithValidInput_ReturnsCorrectName()
+        {
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                using (var sr = new StringReader("John\n"))
+                {
+                    Console.SetIn(sr);
+                    string result = PersonalInfo.GetValidName("First");
+                    Assert.AreEqual("John", result);
+                }
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetInput_WithEmptyInput_ThrowsArgumentException()
+        {
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                using (var sr = new StringReader("\n"))
+                {
+                    Console.SetIn(sr);
+                    PersonalInfo.GetInput("Field");
+                }
+            }
+        }
+
+        [TestMethod]
+        public void GetInput_WithValidInput_ReturnsCorrectInput()
+        {
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                using (var sr = new StringReader("ValidInput\n"))
+                {
+                    Console.SetIn(sr);
+                    string result = PersonalInfo.GetInput("Field");
+                    Assert.AreEqual("ValidInput", result);
+                }
+            }
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(ArgumentException))]
+        public void GetValidNumber_WithInvalidInput_ThrowsArgumentException()
+        {
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                using (var sr = new StringReader("Invalid\n"))
+                {
+                    Console.SetIn(sr);
+                    PersonalInfo.GetValidNumber("Field");
+                }
+            }
+        }
+
+        [TestMethod]
+        public void GetValidNumber_WithValidInput_ReturnsCorrectNumber()
+        {
+            using (var sw = new StringWriter())
+            {
+                Console.SetOut(sw);
+                using (var sr = new StringReader("123\n"))
+                {
+                    Console.SetIn(sr);
+                    int result = PersonalInfo.GetValidNumber("Field");
+                    Assert.AreEqual(123, result);
+                }
+            }
+        }
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentException))]
