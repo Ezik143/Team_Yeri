@@ -173,9 +173,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AddressValidator-Unit-test.cs" />
-    <Compile Include="PersonalInfo-Unit-Test.cs" />
-    <Compile Include="database-Unit-Test.cs" />
+    <Compile Include="unitTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

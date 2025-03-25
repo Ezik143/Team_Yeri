@@ -41,8 +41,13 @@ namespace Basic_information_library.Models
             int postalCode,
             AddressValidator addressValidator = null)
         {
-            Fname = fname ?? throw new ArgumentNullException(nameof(fname));
-            Lname = lname ?? throw new ArgumentNullException(nameof(lname));
+            if (fname == null) throw new ArgumentNullException(nameof(fname));
+            if (lname == null) throw new ArgumentNullException(nameof(lname));
+            if (fname.Length > 60) throw new ArgumentException("First name is too long", nameof(fname));
+            if (lname.Length > 60) throw new ArgumentException("Last name is too long", nameof(lname));
+
+            Fname = fname;
+            Lname = lname;
             Birthday = birthday;
             Country = country ?? throw new ArgumentNullException(nameof(country));
             Province = province ?? throw new ArgumentNullException(nameof(province));
