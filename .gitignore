@@ -1,6 +1,13 @@
 .vs/
-packages/
+bin/
 obj/
 debug/
-vs/
-bing/
+release/
+*.user
+*.suo
+packages/
+*.tmp
+*.log
+*.lock
+*.tlog
+*.ipch
