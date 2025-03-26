@@ -119,6 +119,7 @@ namespace Basic_information_library.Models
 
             while (true)
             {
+                Console.Write($"enter your {nameType}: ");
                 string name = Console.ReadLine()?.Trim();
 
                 if (string.IsNullOrWhiteSpace(name))
@@ -139,7 +140,7 @@ namespace Basic_information_library.Models
         {
             if (fieldName == null)
                 throw new ArgumentNullException(nameof(fieldName), "Field name cannot be null");
-
+            Console.Write($"enter your {fieldName}: ");
             string input = Console.ReadLine()?.Trim();
 
             if (string.IsNullOrWhiteSpace(input))
@@ -153,7 +154,7 @@ namespace Basic_information_library.Models
         {
             if (fieldName == null)
                 throw new ArgumentNullException(nameof(fieldName), "Field name cannot be null");
-
+            Console.Write($"enter your {fieldName}: ");
             string input = Console.ReadLine()?.Trim();
 
             if (string.IsNullOrWhiteSpace(input))

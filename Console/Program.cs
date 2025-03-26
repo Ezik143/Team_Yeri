@@ -28,8 +28,8 @@ class Program
             Console.WriteLine($"{CyanText}======================================{ResetText}");
 
             // Get user's personal information
-            string firstName = PersonalInfo.GetValidName("first");
-            string lastName = PersonalInfo.GetValidName("last");
+            string firstName = PersonalInfo.GetValidName("first name");
+            string lastName = PersonalInfo.GetValidName("last name");
             DateTime birthdate = PersonalInfo.GetValidBirthdate();
 
             Console.WriteLine($"\n{CyanText}--- Address Information ---{ResetText}");

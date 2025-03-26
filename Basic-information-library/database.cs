@@ -28,7 +28,7 @@ namespace Basic_information_library.Models
             }
 
             // Construct the connection string
-            _connectionString = $"Server=your_server;Database=your_database;User Id=your_user;Password={password};";
+            _connectionString = $"Server=your_server;Database=basicinformationdb;User Id=root;Password={password};";
         }
 
         public void Save(PersonalInfo info)

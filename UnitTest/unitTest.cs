@@ -5,7 +5,6 @@ using AddressValidatorLibrary;
 using Basic_information_library.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.IO;
-using Basic_information_library.Models;
 
 namespace UnitTest
 {
