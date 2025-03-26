@@ -5,7 +5,6 @@ debug/
 release/
 *.user
 *.suo
-*.config
 packages/
 *.tmp
 *.log
