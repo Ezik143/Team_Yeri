@@ -28,8 +28,8 @@ class Program
             Console.WriteLine($"{CyanText}======================================{ResetText}");
 
             // Get user's personal information
-            string firstName = PersonalInfo.GetValidName("first");
-            string lastName = PersonalInfo.GetValidName("last");
+            string firstName = PersonalInfo.GetValidName("first name");
+            string lastName = PersonalInfo.GetValidName("last name");
             DateTime birthdate = PersonalInfo.GetValidBirthdate();
 
             Console.WriteLine($"\n{CyanText}--- Address Information ---{ResetText}");
@@ -94,11 +94,9 @@ class Program
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
         }
-        catch (Exception ex)
+        catch (ArgumentException ex)
         {
-            Console.WriteLine($"{PersonalInfo.RedText}Error:{ResetText} An unexpected error occurred: {ex.Message}");
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
+            Console.WriteLine($"{PersonalInfo.RedText}Error:{PersonalInfo.ResetText} {ex.Message}");
         }
         finally
         {

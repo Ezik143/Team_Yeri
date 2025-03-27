@@ -1,2 +1,12 @@
 .vs/
+bin/
+obj/
+debug/
+release/
+*.user
+*.suo
 packages/
+*.tmp
+*.log
+*.ipchbin/
+obj/
