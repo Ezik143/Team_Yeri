@@ -8,7 +8,5 @@ release/
 packages/
 *.tmp
 *.log
-*.lock
-*.tlog
 *.ipchbin/
 obj/
